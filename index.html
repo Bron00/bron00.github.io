@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171717">
+  <meta name="description" content="Portfolio của Nguyễn Hữu Trọng — Biên tập video · Thiết kế đa phương tiện.">
+  <title>NGUYỄN HỮU TRỌNG — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #171717;
+      --paper: #F2F0EA;
+      --muted: #929292;
+      --sand: #C7B59D;
+      --line: rgba(23,23,23,.16);
+      --ease: cubic-bezier(.2,.7,.2,1);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--paper); color: var(--ink);
+      font-family: "Be Vietnam Pro", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .shell { width: min(1320px, calc(100% - 72px)); margin: 0 auto; }
+    .eyebrow { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; }
+    .muted { color: var(--muted); }
+    .topbar {
+      position: absolute; z-index: 10; top: 0; left: 0; width: 100%;
+      color: var(--paper); border-bottom: 1px solid rgba(242,240,234,.16);
+    }
+    .topbar-inner { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: .08em; }
+    .brand-mark { display: grid; place-items: center; width: 31px; height: 31px; border: 1px solid var(--sand); color: var(--sand); font-size: 10px; }
+    .nav { display: flex; align-items: center; gap: 34px; }
+    .nav a { color: rgba(242,240,234,.72); font-size: 11px; transition: color .25s; }
+    .nav a:hover { color: var(--paper); }
+    .nav-contact { border: 1px solid rgba(242,240,234,.42); padding: 11px 16px; }
+    .hero {
+      min-height: 760px; height: min(900px, 100svh); position: relative; overflow: hidden;
+      background: var(--ink); color: var(--paper); display: flex; align-items: center;
+    }
+    .hero::before {
+      content: ""; position: absolute; width: 780px; height: 780px; right: -180px; top: 70px;
+      border-radius: 50%; background: radial-gradient(circle, rgba(199,181,157,.15), rgba(199,181,157,0) 68%);
+      pointer-events: none;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 42px; padding-top: 95px; position: relative; z-index: 1; }
+    .hero-copy { padding: 52px 0 65px; }
+    .hero-copy .eyebrow { color: var(--sand); margin-bottom: 26px; }
+    h1 { font-size: clamp(56px, 7.2vw, 112px); line-height: .98; letter-spacing: -.075em; margin: 0; font-weight: 600; }
+    h1 span { display: block; color: var(--sand); }
+    .hero-bottom { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-top: 46px; }
+    .hero-role { max-width: 245px; color: rgba(242,240,234,.72); font-size: 13px; line-height: 1.8; }
+    .hero-note { max-width: 190px; color: var(--muted); font-size: 10px; line-height: 1.8; text-align: right; }
+    .hero-art { min-height: 490px; height: 54vw; max-height: 590px; position: relative; }
+    .hero-art-frame {
+      position: absolute; overflow: hidden; background: #242321; border: 1px solid rgba(242,240,234,.18);
+    }
+    .hero-art-frame.main { width: 72%; height: 78%; right: 3%; top: 8%; }
+    .hero-art-frame.side { width: 39%; height: 43%; left: 0; bottom: 2%; z-index: 2; }
+    .hero-art-frame.top { width: 33%; height: 31%; right: 0; bottom: 0; z-index: 3; }
+    .visual-main {
+      width: 100%; height: 100%; position: relative; overflow: hidden;
+      background:
+        linear-gradient(135deg, transparent 42%, rgba(199,181,157,.16) 42.2%, transparent 43%),
+        radial-gradient(ellipse at 68% 45%, rgba(199,181,157,.42), transparent 34%),
+        linear-gradient(145deg, #3a3935, #161616 70%);
+    }
+    .visual-main::before {
+      content: ""; position: absolute; width: 62%; height: 120%; left: 22%; top: -8%;
+      border: 1px solid rgba(242,240,234,.28); transform: rotate(25deg);
+    }
+    .visual-main::after {
+      content: "NHT"; position: absolute; right: 7%; bottom: 2%; color: rgba(242,240,234,.16);
+      font-size: clamp(65px, 10vw, 150px); font-weight: 700; letter-spacing: -.1em;
+    }
+    .visual-side {
+      width: 100%; height: 100%; background:
+        linear-gradient(155deg, transparent 48%, rgba(242,240,234,.18) 48.2%, transparent 49%),
+        radial-gradient(ellipse at 20% 28%, rgba(199,181,157,.44), transparent 34%),
+        linear-gradient(135deg, #5e574c, #242321 65%);
+    }
+    .visual-top {
+      width: 100%; height: 100%; background:
+        repeating-linear-gradient(110deg, transparent 0 13px, rgba(242,240,234,.1) 14px 15px),
+        linear-gradient(135deg, #887865, #2a2927 72%);
+    }
+    .frame-label { position: absolute; left: 16px; bottom: 14px; z-index: 4; color: rgba(242,240,234,.76); font-size: 9px; letter-spacing: .16em; text-transform: uppercase; }
+    .hero-index { position: absolute; right: 0; top: 49%; transform: rotate(90deg) translateX(50%); transform-origin: right; color: rgba(242,240,234,.32); font-size: 9px; letter-spacing: .2em; }
+    .scroll-cue { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); color: var(--muted); font-size: 9px; letter-spacing: .16em; text-transform: uppercase; }
+    .scroll-cue::after { content: ""; display: block; width: 1px; height: 28px; margin: 10px auto 0; background: var(--sand); }
+    .intro-strip { background: var(--sand); padding: 22px 0; overflow: hidden; }
+    .intro-strip p { margin: 0; white-space: nowrap; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; text-align: center; }
+    .section { padding: 125px 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 54px; }
+    .section-kicker { color: var(--muted); margin-bottom: 15px; }
+    h2 { font-size: clamp(38px, 5.2vw, 72px); letter-spacing: -.065em; line-height: 1.02; font-weight: 500; margin: 0; }
+    .section-description { max-width: 295px; font-size: 12px; line-height: 1.9; color: #77736d; }
+    .filters { display: flex; flex-wrap: wrap; gap: 9px; margin: 0 0 28px; }
+    .filter {
+      border: 1px solid var(--line); background: transparent; color: var(--ink);
+      padding: 10px 15px; font-size: 10px; cursor: pointer; transition: all .2s;
+    }
+    .filter:hover, .filter.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .project-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 48px 20px; }
+    .project-card { grid-column: span 6; min-width: 0; }
+    .project-card:nth-child(4n+2) { grid-column: span 6; margin-top: 95px; }
+    .project-card:nth-child(4n+3) { grid-column: span 5; }
+    .project-card:nth-child(4n+4) { grid-column: span 7; }
+    .project-visual {
+      position: relative; aspect-ratio: 1.46 / 1; overflow: hidden; background: #282725;
+      display: flex; align-items: center; justify-content: center; isolation: isolate;
+    }
+    .project-visual::before, .project-visual::after { content: ""; position: absolute; inset: 0; z-index: -1; }
+    .art-auto::before {
+      background: radial-gradient(ellipse at 65% 58%, rgba(199,181,157,.36), transparent 26%),
+      linear-gradient(155deg, transparent 52%, rgba(242,240,234,.15) 52.2%, transparent 53%),
+      linear-gradient(135deg,#45433e,#151515 70%);
+    }
+    .art-auto::after { inset: 17% 12%; border: 1px solid rgba(242,240,234,.22); transform: skew(-15deg); }
+    .art-event::before { background: radial-gradient(ellipse at 40% 32%, rgba(199,181,157,.56), transparent 22%), linear-gradient(135deg,#5b5147,#191919 72%); }
+    .art-event::after { inset: 12% 19%; border: 1px solid rgba(242,240,234,.25); border-radius: 50%; transform: rotate(-24deg); }
+    .art-coffee::before { background: radial-gradient(ellipse at 48% 48%, #a08a6c 0, #645440 19%, transparent 20%), linear-gradient(135deg,#77705f,#201f1d 76%); }
+    .art-coffee::after { inset: 24% 30%; border: 1px solid rgba(242,240,234,.35); border-radius: 50%; box-shadow: 0 0 0 18px rgba(242,240,234,.04), 0 0 0 36px rgba(242,240,234,.03); }
+    .art-food::before { background: radial-gradient(ellipse at 65% 35%, rgba(199,181,157,.54), transparent 23%), linear-gradient(135deg,#55483d,#1e1b19 72%); }
+    .art-food::after { inset: 17% 24%; border: 1px solid rgba(242,240,234,.3); transform: rotate(14deg); }
+    .art-ai::before { background: repeating-linear-gradient(135deg, transparent 0 17px, rgba(242,240,234,.09) 18px 19px), radial-gradient(ellipse at 55% 45%, rgba(199,181,157,.34), transparent 32%), linear-gradient(135deg,#46423d,#171717 75%); }
+    .art-ai::after { inset: 18% 14%; border: 1px solid rgba(242,240,234,.25); clip-path: polygon(10% 0,100% 15%,88% 100%,0 78%); }
+    .art-jazz::before { background: radial-gradient(ellipse at 52% 70%, rgba(199,181,157,.5), transparent 20%), linear-gradient(160deg,#302a25,#111 70%); }
+    .art-jazz::after { inset: 9% 45%; border-left: 1px solid rgba(242,240,234,.3); border-right: 1px solid rgba(242,240,234,.3); transform: skew(13deg); }
+    .visual-word {
+      position: absolute; z-index: 1; left: 24px; bottom: 20px; color: rgba(242,240,234,.8);
+      font-size: clamp(26px, 4vw, 54px); line-height: .94; letter-spacing: -.07em; font-weight: 600;
+    }
+    .visual-number { position: absolute; z-index: 1; top: 19px; right: 20px; color: rgba(242,240,234,.58); font-size: 9px; letter-spacing: .18em; }
+    .project-meta { display: flex; justify-content: space-between; align-items: start; gap: 20px; padding-top: 17px; }
+    .project-title { font-size: 17px; font-weight: 500; letter-spacing: -.03em; margin: 0 0 7px; }
+    .project-type { color: var(--muted); font-size: 10px; letter-spacing: .04em; }
+    .project-year { color: var(--muted); font-size: 10px; }
+    .project-card[hidden] { display: none; }
+    .all-work-note { margin-top: 65px; padding-top: 22px; border-top: 1px solid var(--line); color: #77736d; font-size: 11px; line-height: 1.8; }
+    .about { background: #e7e3da; }
+    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 11%; align-items: start; }
+    .about-stamp { aspect-ratio: 3 / 4; max-width: 340px; position: relative; overflow: hidden; background: linear-gradient(145deg,#5d584f,#1c1b19 68%); }
+    .about-stamp::before { content: "NHT"; position: absolute; left: 8%; bottom: 0; color: rgba(242,240,234,.15); font-size: clamp(90px, 13vw, 180px); line-height: .9; font-weight: 700; letter-spacing: -.12em; }
+    .about-stamp::after { content: ""; position: absolute; inset: 13% 16%; border: 1px solid rgba(242,240,234,.34); transform: rotate(16deg); }
+    .about-copy h2 { max-width: 650px; margin-bottom: 27px; }
+    .about-copy p { max-width: 600px; color: #66615a; font-size: 13px; line-height: 2; }
+    .about-facts { display: grid; grid-template-columns: repeat(2,1fr); gap: 25px; border-top: 1px solid var(--line); margin-top: 38px; padding-top: 24px; }
+    .fact-label { display: block; color: var(--muted); font-size: 9px; text-transform: uppercase; letter-spacing: .16em; margin-bottom: 8px; }
+    .fact-value { font-size: 12px; }
+    .contact { background: var(--ink); color: var(--paper); padding: 105px 0 38px; }
+    .contact h2 { max-width: 780px; font-size: clamp(52px, 8vw, 112px); margin: 22px 0 45px; }
+    .contact h2 span { color: var(--sand); }
+    .contact-row { display: flex; justify-content: space-between; align-items: end; gap: 28px; border-top: 1px solid rgba(242,240,234,.2); padding-top: 25px; }
+    .contact-mail { font-size: 13px; color: var(--sand); border-bottom: 1px solid var(--sand); padding-bottom: 7px; }
+    .contact-hint { color: var(--muted); font-size: 10px; line-height: 1.8; max-width: 230px; }
+    footer { padding-top: 70px; display: flex; justify-content: space-between; gap: 20px; color: var(--muted); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 900px) {
+      .shell { width: min(100% - 44px, 700px); }
+      .hero { min-height: auto; height: auto; padding: 145px 0 95px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 5px; padding-top: 0; }
+      .hero-copy { padding: 22px 0 0; }
+      .hero-art { height: 480px; min-height: 0; width: 88%; margin: 0 auto; }
+      .hero-bottom { margin-top: 28px; }
+      .hero-index { display: none; }
+      .section { padding: 88px 0; }
+      .section-head { align-items: start; flex-direction: column; margin-bottom: 36px; }
+      .project-grid { gap: 36px 16px; }
+      .project-card, .project-card:nth-child(4n+2), .project-card:nth-child(4n+3), .project-card:nth-child(4n+4) { grid-column: span 6; margin-top: 0; }
+      .project-card:nth-child(even) { margin-top: 55px; }
+      .about-grid { grid-template-columns: .7fr 1.3fr; gap: 7%; }
+    }
+    @media (max-width: 600px) {
+      .shell { width: calc(100% - 36px); }
+      .topbar-inner { min-height: 68px; }
+      .nav { gap: 15px; }
+      .nav a { font-size: 9px; }
+      .nav .nav-contact { padding: 9px 10px; }
+      .brand { font-size: 10px; gap: 8px; }
+      .brand-mark { width: 27px; height: 27px; }
+      .hero { padding: 123px 0 75px; }
+      h1 { font-size: clamp(49px, 14vw, 76px); }
+      .hero-art { width: 100%; height: 350px; }
+      .hero-art-frame.main { width: 74%; height: 78%; }
+      .hero-art-frame.side { width: 42%; height: 42%; }
+      .hero-art-frame.top { width: 33%; height: 29%; }
+      .hero-bottom { align-items: start; }
+      .hero-note { display: none; }
+      .intro-strip { padding: 17px 0; }
+      .intro-strip p { font-size: 9px; }
+      .section { padding: 72px 0; }
+      .project-grid { display: block; }
+      .project-card, .project-card:nth-child(even) { margin: 0 0 35px; }
+      .project-visual { aspect-ratio: 1.25 / 1; }
+      .project-title { font-size: 15px; }
+      .about-grid { grid-template-columns: 1fr; gap: 38px; }
+      .about-stamp { width: 57%; }
+      .about-copy p { font-size: 12px; }
+      .contact { padding-top: 78px; }
+      .contact-row { align-items: start; flex-direction: column; }
+      footer { padding-top: 48px; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#top" aria-label="Về đầu trang">
+        <span class="brand-mark">NHT</span><span>NGUYỄN HỮU TRỌNG</span>
+      </a>
+      <nav class="nav" aria-label="Điều hướng chính">
+        <a href="#work">Dự án</a>
+        <a href="#about">Giới thiệu</a>
+        <a class="nav-contact" href="#contact">Liên hệ ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Portfolio cá nhân · Việt Nam</div>
+          <h1>HÌNH ẢNH<span>CÓ NGÔN NGỮ.</span></h1>
+          <div class="hero-bottom">
+            <div class="hero-role">Biên tập video<br>Thiết kế đa phương tiện</div>
+            <div class="hero-note">Chọn lọc dự án và sản phẩm sáng tạo trong quá trình làm việc.</div>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="Hình ảnh đồ họa đại diện portfolio">
+          <div class="hero-art-frame main"><div class="visual-main"></div><span class="frame-label">Visual direction / 01</span></div>
+          <div class="hero-art-frame side"><div class="visual-side"></div><span class="frame-label">Motion / Edit</span></div>
+          <div class="hero-art-frame top"><div class="visual-top"></div></div>
+          <div class="hero-index">SELECTED WORKS — 2023 / 2026</div>
+        </div>
+      </div>
+      <div class="scroll-cue">Cuộn để khám phá</div>
+    </section>
+
+    <div class="intro-strip"><div class="shell"><p>Biên tập video · Thiết kế đa phương tiện · Nội dung hình ảnh · Sáng tạo thị giác</p></div></div>
+
+    <section class="section" id="work">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow section-kicker">01 / Dự án chọn lọc</div>
+            <h2>Một vài dấu ấn<br>qua hình ảnh.</h2>
+          </div>
+          <p class="section-description">Các dự án được chọn từ nhiều nhóm công việc: video thương mại, nội dung thương hiệu, ẩm thực và sự kiện.</p>
+        </div>
+
+        <div class="filters reveal" role="group" aria-label="Lọc dự án">
+          <button class="filter active" data-filter="all" aria-pressed="true">Tất cả</button>
+          <button class="filter" data-filter="commercial" aria-pressed="false">Thương mại</button>
+          <button class="filter" data-filter="automotive" aria-pressed="false">Ô tô</button>
+          <button class="filter" data-filter="food" aria-pressed="false">Ẩm thực</button>
+          <button class="filter" data-filter="event" aria-pressed="false">Sự kiện</button>
+          <button class="filter" data-filter="creative" aria-pressed="false">Sáng tạo</button>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card reveal" data-category="automotive">
+            <div class="project-visual art-auto">
+              <span class="visual-number">01 / AUTOMOTIVE</span>
+              <span class="visual-word">PRO<br>AUTO.</span>
+            </div>
+            <div class="project-meta">
+              <div><h3 class="project-title">PROAUTO.VN</h3><div class="project-type">Video ô tô · Nội dung thương hiệu</div></div>
+              <span class="project-year">01—05</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-category="event">
+            <div class="project-visual art-event">
+              <span class="visual-number">02 / EVENT</span>
+              <span class="visual-word">LAVENDER<br>× BMW</span>
+            </div>
+            <div class="project-meta">
+              <div><h3 class="project-title">Lavender × BMW</h3><div class="project-type">Teaser sự kiện</div></div>
+              <span class="project-year">02</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-category="commercial">
+            <div class="project-visual art-coffee">
+              <span class="visual-number">03 / PRODUCT</span>
+              <span class="visual-word">NGÓI ĐỎ<br>COFFEE</span>
+            </div>
+            <div class="project-meta">
+              <div><h3 class="project-title">Ngói Đỏ Coffee</h3><div class="project-type">12 video sản phẩm</div></div>
+              <span class="project-year">03</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-category="creative">
+            <div class="project-visual art-ai">
+              <span class="visual-number">04 / CREATIVE</span>
+              <span class="visual-word">HƯNG NGHIỆP<br>CÙNG AI</span>
+            </div>
+            <div class="project-meta">
+              <div><h3 class="project-title">Hưng Nghiệp cùng AI</h3><div class="project-type">Nội dung sáng tạo</div></div>
+              <span class="project-year">04</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-category="food">
+            <div class="project-visual art-food">
+              <span class="visual-number">05 / FOOD & REVIEW</span>
+              <span class="visual-word">MADELEINE<br>CAKE</span>
+            </div>
+            <div class="project-meta">
+              <div><h3 class="project-title">Review & Ẩm thực</h3><div class="project-type">Madeleine Cake · Nhà Gom Đặc Sản · Hương Đà Lạt · Mộc Chill</div></div>
+              <span class="project-year">05</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-category="food">
+            <div class="project-visual art-jazz">
+              <span class="visual-number">06 / PLACE & EXPERIENCE</span>
+              <span class="visual-word">HAVEN<br>JAZZ</span>
+            </div>
+            <div class="project-meta">
+              <div><h3 class="project-title">Không gian & trải nghiệm</h3><div class="project-type">Haven Jazz · Gà Nổ Muối – Quán Nướng Nha</div></div>
+              <span class="project-year">06</span>
+            </div>
+          </article>
+        </div>
+
+        <p class="all-work-note reveal">Các dự án khác gồm EMMA Vietnam 2023, Quyền lợi đại lý, ký kết Micro-Precision Germany; video Porsche Taycan, Toyota Alphard, Subaru Forester, Toyota Innova, Kia Carnival; Coffee Salt Lemon Peel, Matcha Salt Lemon Peel; Nano Đông Trùng Hạ Thảo, NEWS và các Facebook Reels của Lavender Đà Lạt.</p>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="shell about-grid">
+        <div class="about-stamp reveal" aria-label="Đồ họa nhận diện cá nhân"></div>
+        <div class="about-copy reveal">
+          <div class="eyebrow section-kicker">02 / Giới thiệu</div>
+          <h2>Tư duy hình ảnh.<br>Chú trọng chi tiết.</h2>
+          <p>Tôi là Nguyễn Hữu Trọng, làm việc trong lĩnh vực biên tập video và thiết kế đa phương tiện. Portfolio này tổng hợp một số dự án thuộc các nhóm nội dung thương mại, ô tô, ẩm thực, sản phẩm và sự kiện.</p>
+          <p>Thay vì trình bày mọi thứ cùng một cách, mỗi dự án được đặt trong một nhịp điệu hình ảnh riêng — tập trung vào nội dung, cảm xúc và cách câu chuyện được truyền tải.</p>
+          <div class="about-facts">
+            <div><span class="fact-label">Lĩnh vực</span><span class="fact-value">Video · Multimedia</span></div>
+            <div><span class="fact-label">Địa điểm</span><span class="fact-value">Đà Lạt, Việt Nam</span></div>
+            <div><span class="fact-label">Định dạng</span><span class="fact-value">Portfolio chọn lọc</span></div>
+            <div><span class="fact-label">Ngôn ngữ</span><span class="fact-value">Tiếng Việt</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="shell">
+        <div class="eyebrow" style="color:var(--sand)">03 / Liên hệ</div>
+        <h2>Cùng tạo nên<br><span>điều đáng nhớ.</span></h2>
+        <div class="contact-row">
+          <div>
+            <div class="eyebrow muted" style="margin-bottom:13px">Kết nối công việc</div>
+            <a class="contact-mail" href="mailto:your-email@example.com">your-email@example.com ↗</a>
+          </div>
+          <p class="contact-hint">Thay địa chỉ email mẫu bằng email liên hệ chính thức trước khi xuất bản website.</p>
+        </div>
+        <footer>
+          <span>© <span id="year"></span> NGUYỄN HỮU TRỌNG</span>
+          <span>Biên tập video · Thiết kế đa phương tiện</span>
+          <a href="#top">Lên đầu trang ↑</a>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const filters = document.querySelectorAll(".filter");
+    const cards = document.querySelectorAll(".project-card");
+    filters.forEach(button => {
+      button.addEventListener("click", () => {
+        const selected = button.dataset.filter;
+        filters.forEach(item => {
+          const active = item === button;
+          item.classList.toggle("active", active);
+          item.setAttribute("aria-pressed", String(active));
+        });
+        cards.forEach(card => {
+          card.hidden = selected !== "all" && card.dataset.category !== selected;
+        });
+      });
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
