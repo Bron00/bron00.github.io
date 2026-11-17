@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#171717">
-  <meta name="description" content="Portfolio của Nguyễn Hữu Trọng — Biên tập video · Thiết kế đa phương tiện.">
+  <meta name="description" content="Nguyễn Hữu Trọng — Biên tập video · Thiết kế đa phương tiện. Portfolio dự án chọn lọc.">
+  <meta property="og:title" content="Nguyễn Hữu Trọng — Portfolio">
+  <meta property="og:description" content="Biên tập video · Thiết kế đa phương tiện">
+  <meta property="og:type" content="website">
   <title>NGUYỄN HỮU TRỌNG — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,6 +30,8 @@
     }
     a { color: inherit; text-decoration: none; }
     button { font: inherit; }
+    button:focus-visible, a:focus-visible { outline: 2px solid var(--sand); outline-offset: 4px; }
+    ::selection { background: var(--sand); color: var(--ink); }
     .shell { width: min(1320px, calc(100% - 72px)); margin: 0 auto; }
     .eyebrow { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; }
     .muted { color: var(--muted); }
@@ -209,6 +214,28 @@
       .contact-row { align-items: start; flex-direction: column; }
       footer { padding-top: 48px; flex-direction: column; }
     }
+
+    button:focus-visible, a:focus-visible { outline: 2px solid var(--sand); outline-offset: 4px; }
+    .menu-toggle { display: none; border: 1px solid rgba(242,240,234,.28); background: transparent; color: var(--paper); padding: 9px 11px; font-size: 9px; letter-spacing: .1em; cursor: pointer; }
+    .project-visual { transition: transform .35s var(--ease); }
+    .project-card:hover .project-visual { transform: translateY(-3px); }
+    .project-visual::before { transition: transform .7s var(--ease), filter .7s var(--ease); }
+    .project-card:hover .project-visual::before { transform: scale(1.045); filter: saturate(1.1); }
+    .contact-note { max-width: 470px; color: rgba(242,240,234,.65); font-size: 11px; line-height: 1.9; }
+    @media (max-width: 600px) {
+      .menu-toggle { display: inline-block; }
+      .nav {
+        position: fixed; inset: 68px 0 0; display: flex; flex-direction: column; align-items: stretch;
+        gap: 0; padding: 18px 19px 35px; background: var(--ink); opacity: 0; visibility: hidden;
+        transform: translateY(-8px); transition: opacity .25s, transform .25s, visibility .25s;
+      }
+      .nav.is-open { opacity: 1; visibility: visible; transform: translateY(0); }
+      .nav a { padding: 19px 0; border-bottom: 1px solid rgba(242,240,234,.16); font-size: 13px; }
+      .nav .nav-contact { margin-top: 18px; padding: 14px; border: 1px solid rgba(242,240,234,.3); text-align: center; }
+      body.menu-open { overflow: hidden; }
+      .contact-note { font-size: 10px; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
@@ -222,7 +249,8 @@
       <a class="brand" href="#top" aria-label="Về đầu trang">
         <span class="brand-mark">NHT</span><span>NGUYỄN HỮU TRỌNG</span>
       </a>
-      <nav class="nav" aria-label="Điều hướng chính">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">MENU +</button>
+      <nav class="nav" id="main-nav" aria-label="Điều hướng chính">
         <a href="#work">Dự án</a>
         <a href="#about">Giới thiệu</a>
         <a class="nav-contact" href="#contact">Liên hệ ↗</a>
@@ -260,7 +288,7 @@
             <div class="eyebrow section-kicker">01 / Dự án chọn lọc</div>
             <h2>Một vài dấu ấn<br>qua hình ảnh.</h2>
           </div>
-          <p class="section-description">Các dự án được chọn từ nhiều nhóm công việc: video thương mại, nội dung thương hiệu, ẩm thực và sự kiện.</p>
+          <p class="section-description">Các dự án được chọn từ nhiều nhóm công việc: video ô tô, nội dung thương hiệu, sản phẩm, ẩm thực và sự kiện.</p>
         </div>
 
         <div class="filters reveal" role="group" aria-label="Lọc dự án">
@@ -279,7 +307,7 @@
               <span class="visual-word">PRO<br>AUTO.</span>
             </div>
             <div class="project-meta">
-              <div><h3 class="project-title">PROAUTO.VN</h3><div class="project-type">Video ô tô · Nội dung thương hiệu</div></div>
+              <div><h3 class="project-title">PROAUTO.VN</h3><div class="project-type">EMMA Vietnam 2023 · Video ô tô · Nội dung thương hiệu</div></div>
               <span class="project-year">01—05</span>
             </div>
           </article>
@@ -290,7 +318,7 @@
               <span class="visual-word">LAVENDER<br>× BMW</span>
             </div>
             <div class="project-meta">
-              <div><h3 class="project-title">Lavender × BMW</h3><div class="project-type">Teaser sự kiện</div></div>
+              <div><h3 class="project-title">Lavender × BMW</h3><div class="project-type">Teaser sự kiện · Lavender × BMW</div></div>
               <span class="project-year">02</span>
             </div>
           </article>
@@ -301,7 +329,7 @@
               <span class="visual-word">NGÓI ĐỎ<br>COFFEE</span>
             </div>
             <div class="project-meta">
-              <div><h3 class="project-title">Ngói Đỏ Coffee</h3><div class="project-type">12 video sản phẩm</div></div>
+              <div><h3 class="project-title">Ngói Đỏ Coffee</h3><div class="project-type">12 video sản phẩm · Coffee Salt Lemon Peel · Matcha Salt Lemon Peel</div></div>
               <span class="project-year">03</span>
             </div>
           </article>
@@ -312,7 +340,7 @@
               <span class="visual-word">HƯNG NGHIỆP<br>CÙNG AI</span>
             </div>
             <div class="project-meta">
-              <div><h3 class="project-title">Hưng Nghiệp cùng AI</h3><div class="project-type">Nội dung sáng tạo</div></div>
+              <div><h3 class="project-title">Hưng Nghiệp cùng AI</h3><div class="project-type">Nội dung sáng tạo · Hưng Nghiệp cùng AI</div></div>
               <span class="project-year">04</span>
             </div>
           </article>
@@ -323,8 +351,30 @@
               <span class="visual-word">MADELEINE<br>CAKE</span>
             </div>
             <div class="project-meta">
-              <div><h3 class="project-title">Review & Ẩm thực</h3><div class="project-type">Madeleine Cake · Nhà Gom Đặc Sản · Hương Đà Lạt · Mộc Chill</div></div>
+              <div><h3 class="project-title">Review & Ẩm thực</h3><div class="project-type">Madeleine Cake · Nhà Gom Đặc Sản · Hương Đà Lạt</div></div>
               <span class="project-year">05</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-category="event">
+            <div class="project-visual art-event">
+              <span class="visual-number">06 / CAMERA WORK</span>
+              <span class="visual-word">LAVENDER<br>ĐÀ LẠT</span>
+            </div>
+            <div class="project-meta">
+              <div><h3 class="project-title">Lavender Đà Lạt</h3><div class="project-type">Camera / Quay phim · 02 Facebook Reels</div></div>
+              <span class="project-year">06</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-category="creative">
+            <div class="project-visual art-ai">
+              <span class="visual-number">07 / ADVERTISING & NEWS</span>
+              <span class="visual-word">NANO<br>NEWS</span>
+            </div>
+            <div class="project-meta">
+              <div><h3 class="project-title">Quảng cáo & Tin tức</h3><div class="project-type">Nano Đông Trùng Hạ Thảo · NEWS</div></div>
+              <span class="project-year">07</span>
             </div>
           </article>
 
@@ -340,7 +390,7 @@
           </article>
         </div>
 
-        <p class="all-work-note reveal">Các dự án khác gồm EMMA Vietnam 2023, Quyền lợi đại lý, ký kết Micro-Precision Germany; video Porsche Taycan, Toyota Alphard, Subaru Forester, Toyota Innova, Kia Carnival; Coffee Salt Lemon Peel, Matcha Salt Lemon Peel; Nano Đông Trùng Hạ Thảo, NEWS và các Facebook Reels của Lavender Đà Lạt.</p>
+        <p class="all-work-note reveal">Các dự án khác gồm Quyền lợi đại lý, ký kết Micro-Precision Germany, Porsche Taycan, Toyota Alphard, Subaru Forester, Toyota Innova, Kia Carnival, Nano Đông Trùng Hạ Thảo và NEWS. Vai trò quay phim được ghi riêng cho 02 Facebook Reels của Lavender Đà Lạt; teaser Lavender × BMW được trình bày như một dự án độc lập.</p>
       </div>
     </section>
 
@@ -353,7 +403,7 @@
           <p>Tôi là Nguyễn Hữu Trọng, làm việc trong lĩnh vực biên tập video và thiết kế đa phương tiện. Portfolio này tổng hợp một số dự án thuộc các nhóm nội dung thương mại, ô tô, ẩm thực, sản phẩm và sự kiện.</p>
           <p>Thay vì trình bày mọi thứ cùng một cách, mỗi dự án được đặt trong một nhịp điệu hình ảnh riêng — tập trung vào nội dung, cảm xúc và cách câu chuyện được truyền tải.</p>
           <div class="about-facts">
-            <div><span class="fact-label">Lĩnh vực</span><span class="fact-value">Video · Multimedia</span></div>
+            <div><span class="fact-label">Lĩnh vực</span><span class="fact-value">Biên tập video · Thiết kế đa phương tiện</span></div>
             <div><span class="fact-label">Địa điểm</span><span class="fact-value">Đà Lạt, Việt Nam</span></div>
             <div><span class="fact-label">Định dạng</span><span class="fact-value">Portfolio chọn lọc</span></div>
             <div><span class="fact-label">Ngôn ngữ</span><span class="fact-value">Tiếng Việt</span></div>
@@ -369,9 +419,8 @@
         <div class="contact-row">
           <div>
             <div class="eyebrow muted" style="margin-bottom:13px">Kết nối công việc</div>
-            <a class="contact-mail" href="mailto:your-email@example.com">your-email@example.com ↗</a>
+            <p class="contact-note">Cảm ơn bạn đã dành thời gian xem portfolio. Thông tin email và các kênh liên hệ trực tiếp sẽ được cập nhật tại đây.</p>
           </div>
-          <p class="contact-hint">Thay địa chỉ email mẫu bằng email liên hệ chính thức trước khi xuất bản website.</p>
         </div>
         <footer>
           <span>© <span id="year"></span> NGUYỄN HỮU TRỌNG</span>
@@ -383,6 +432,27 @@
   </main>
 
   <script>
+
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mainNav = document.querySelector(".nav");
+    const closeMenu = () => {
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.textContent = "MENU +";
+      mainNav.classList.remove("is-open");
+      document.body.classList.remove("menu-open");
+    };
+    menuToggle.addEventListener("click", () => {
+      const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!isOpen));
+      menuToggle.textContent = isOpen ? "MENU +" : "ĐÓNG ×";
+      mainNav.classList.toggle("is-open", !isOpen);
+      document.body.classList.toggle("menu-open", !isOpen);
+    });
+    mainNav.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 600) closeMenu();
+    });
+
     const filters = document.querySelectorAll(".filter");
     const cards = document.querySelectorAll(".project-card");
     filters.forEach(button => {
@@ -399,15 +469,19 @@
       });
     });
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    } else {
+      document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
+    }
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
