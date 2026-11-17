@@ -6,25 +6,25 @@
   /* 01. DARK FOUNDATION — nền chính và bề mặt */
   --color-ink-950:#11110f;       /* nền toàn trang */
   --color-ink-900:#191916;       /* nền card / panel */
-  --color-ink-850:var(--color-ink-850);       /* sắc độ phụ trong hero */
-  --color-ink-800:var(--color-ink-800);       /* nền khung video */
+  --color-ink-850:#1a1915;       /* sắc độ phụ trong hero */
+  --color-ink-800:#080808;       /* nền khung video */
 
   /* 02. LIGHT FOUNDATION — chữ sáng */
   --color-paper-100:#f1efe9;     /* chữ chính trên nền tối */
-  --color-paper-200:var(--color-paper-200);     /* nền section About */
-  --color-paper-300:var(--color-paper-300);     /* chữ menu */
-  --color-paper-400:var(--color-paper-400);     /* đoạn giới thiệu */
+  --color-paper-200:#e9e5dc;     /* nền section About */
+  --color-paper-300:#d1cec6;     /* chữ menu */
+  --color-paper-400:#c2beb6;     /* đoạn giới thiệu */
 
   /* 03. NEUTRAL / BORDER — trung tính và đường viền */
   --color-neutral-400:#aaa69d;   /* chữ phụ */
-  --color-neutral-600:var(--color-neutral-600);   /* viền nút phụ */
-  --color-neutral-700:var(--color-neutral-700);   /* chữ trên nền sáng */
+  --color-neutral-600:#777166;   /* viền nút phụ */
+  --color-neutral-700:#5f5b54;   /* chữ trên nền sáng */
   --color-neutral-800:#393832;   /* đường viền tối */
-  --color-neutral-900:var(--color-neutral-900);   /* chữ chính trên nền sáng */
+  --color-neutral-900:#181815;   /* chữ chính trên nền sáng */
 
   /* 04. BRAND ACCENT — màu nhấn champagne */
   --color-accent-300:#c8b69b;    /* màu nhấn chính */
-  --color-accent-700:var(--color-accent-700);    /* màu nhấn trên nền sáng */
+  --color-accent-700:#786b58;    /* màu nhấn trên nền sáng */
 
   /* 05. RGB CHANNELS — dùng cho hiệu ứng trong suốt */
   --rgb-bg:17,17,15;
