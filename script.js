@@ -1,0 +1,5 @@
+const menu=document.querySelector('.menu'),nav=document.querySelector('.nav');
+menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));menu.textContent=open?'ĐÓNG ×':'MENU +';nav.classList.toggle('open',open);document.body.classList.toggle('nav-open',open)});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.setAttribute('aria-expanded','false');menu.textContent='MENU +';nav.classList.remove('open');document.body.classList.remove('nav-open')}));
+document.querySelectorAll('.filter').forEach(button=>button.addEventListener('click',()=>{const filter=button.dataset.filter;document.querySelectorAll('.filter').forEach(item=>{const active=item===button;item.classList.toggle('active',active);item.setAttribute('aria-pressed',String(active))});document.querySelectorAll('.projects > .project').forEach(card=>card.hidden=filter!=='all'&&card.dataset.category!==filter)}));
+document.getElementById('year').textContent=new Date().getFullYear();
